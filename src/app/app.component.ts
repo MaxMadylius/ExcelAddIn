@@ -1,3 +1,4 @@
+import { ProgressBarService } from './../services/progress-bar.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'AngularAddIn';
+  title = 'AngularAddIn'
+  showProgress: boolean; 
+  progressService: ProgressBarService;
+
+  constructor(progressService: ProgressBarService){
+    this.progressService = progressService;
+  }
 }

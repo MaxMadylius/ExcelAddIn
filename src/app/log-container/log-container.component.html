@@ -1,0 +1,13 @@
+<div style="padding: 10px;">
+    <button (click)="onDeleteClick()" [style.display]="loggerService.logs.length > 0 ? 'block' : 'none'"   mat-icon-button color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>delete</mat-icon>
+    </button>
+    <div *ngFor="let log of loggerService.logs">
+        <div [ngSwitch]="log.logLevel">
+            <div *ngSwitchCase="loggerService.LogLevel.Error" style="color: rgb(109, 0, 0); background-color: lightpink;">Error: {{log.text}}</div>
+            <div *ngSwitchCase="loggerService.LogLevel.Warning" style="color:darkgoldenrod">Warning: {{log.text}}</div>
+            <div *ngSwitchCase="loggerService.LogLevel.Ok" style="color:rgb(31, 134, 0);">Ok: {{log.text}}</div>
+            <div *ngSwitchDefault>{{log.text}}</div>
+        </div>
+    </div>
+</div>
