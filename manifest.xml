@@ -10,7 +10,7 @@
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
-    <AppDomain>contoso.com</AppDomain>
+    <AppDomain>localhost:3000</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
@@ -63,10 +63,6 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <!-- <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/> -->
-
         <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
         <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
         <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
@@ -87,6 +83,17 @@
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
       </bt:LongStrings>
     </Resources>
-    
+    <WebApplicationInfo>
+			<Id>0b3a5f38-6f4d-4109-84da-20eef2e92599</Id>
+			<Resource>api://localhost:3000/0b3a5f38-6f4d-4109-84da-20eef2e92599</Resource>
+			<Scopes>
+        <Scope>email</Scope>
+				<Scope>openid</Scope>
+				<Scope>offline_access</Scope>
+				<Scope>profile</Scope>
+				<Scope>files.read.all</Scope>
+        <Scope>User.Read</Scope>
+			</Scopes>
+		</WebApplicationInfo>
   </VersionOverrides>
 </OfficeApp>

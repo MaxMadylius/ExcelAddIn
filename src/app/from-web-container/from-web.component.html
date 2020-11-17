@@ -1,4 +1,16 @@
 <div style="padding: 10px;">
-    <h1>Some data from web </h1>
+    <h1>Get from random org</h1>
+    <div style="width: 50%;">
+        <mat-checkbox [checked]="_isNumeric" (change)="isNumeric($event.checked)" >Numeric (0-9)</mat-checkbox>
+        <mat-checkbox [checked]="_isUpperCase" (change)="isUpperCase($event.checked)" >Uppercase (A-Z)</mat-checkbox>
+        <mat-checkbox [checked]="_isLowerCase" (change)="isLowerCase($event.checked)" >Lowercase (a-z)</mat-checkbox>
+    </div>
+    <div>
+        <div style="width: 15%; display: inline-block;">Count: </div><mat-slider style="width: 83%" thumbLabel (change)="updateRandomCount($event)"  [displayWith]="randomCount" min="1" max="25" step="1" value="1"></mat-slider>
+    </div>
+    <div>
+        <span style="width: 15%; display: inline-block;">Length: </span><mat-slider style="width: 83%" thumbLabel (change)="updateStringLength($event)" [displayWith]="stringLength" min="1" max="20" step="1" value="1"></mat-slider>
+    </div>
+
     <button (click)="onGetRandomClick()" mat-raised-button color="primary">Get string</button>
 </div>

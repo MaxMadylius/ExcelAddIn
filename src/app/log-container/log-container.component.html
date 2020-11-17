@@ -1,6 +1,6 @@
 <div style="padding: 10px;">
     <button (click)="onDeleteClick()" [style.display]="loggerService.logs.length > 0 ? 'block' : 'none'"   mat-icon-button color="primary" aria-label="Example icon button with a delete icon">
-        <mat-icon>delete</mat-icon>
+        <mat-icon matBadge="{{loggerService.logs.length}}" matBadgeColor="warn">delete</mat-icon>
     </button>
     <div *ngFor="let log of loggerService.logs">
         <div [ngSwitch]="log.logLevel">

@@ -10,6 +10,7 @@ export class LoggerService{
 
     error(msg: any){
         this.logs.push(new LogEntry(msg, LogLevel.Error ));
+        console.log(this.logs.length);
     };
 
     ok(msg: any){

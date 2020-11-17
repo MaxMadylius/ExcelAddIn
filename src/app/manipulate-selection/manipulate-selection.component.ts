@@ -14,6 +14,7 @@ export class ManipulateSelectionComponent{
     constructor (progressBarService: ProgressBarService, loggerService: LoggerService){
         this.progressService = progressBarService;
         this.loggerService = loggerService;
+        this.subscribeOnChange();
     }
 
     async onHighlightClick(){            
@@ -47,9 +48,7 @@ export class ManipulateSelectionComponent{
                 range.load("rowCount");
                 range.load("columnCount");
                 range.load("text");
-                console.log(2);
                 await context.sync();
-                console.log(3);
 
                 const numRows = range.rowCount;
                 const numCols = range.columnCount;
@@ -96,5 +95,22 @@ export class ManipulateSelectionComponent{
         }finally{
             this.progressService.hideProgressBar(); 
         }
-    }        
+    }      
+    
+    async subscribeOnChange(){
+        await Excel.run(async context => {
+                var sheet = context.workbook.worksheets.getFirst();
+                sheet.onChanged.add(async data => {
+                    this.loggerService.warn(`${data.address} was edited:  ${data.details.valueBefore} changed to ${data.details.valueAfter}`);
+                });
+                // this.onChange.bind(this)
+            });
+    }
+
+    async onChange(data){
+        if(data.changeType == "RangeEdited")
+        {
+            this.loggerService.warn(`${data.address} was edited:  ${data.details.valueBefore} changed to ${data.details.valueAfter}`);
+        }
+    }
 }
